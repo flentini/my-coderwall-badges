@@ -36,17 +36,10 @@ if (!class_exists('CWB')) :
 		}
 		
 		protected function init_badges() {
-			$url = 'http://coderwall.com/'.$this->username.'.json';
-			$ch = curl_init($url);
-			curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-			curl_setopt($ch, CURLOPT_BINARYTRANSFER, true);
-			curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
-			$cwbadges = curl_exec($ch);
-			curl_close($ch);
-			
+			$cwbadges = wp_remote_get('http://coderwall.com/'.$this->username.'.json');
 			if(!empty($cwbadges)){
 				$badges_string = '<div>';
-				$cwbadges = json_decode($cwbadges);
+				$cwbadges = json_decode($cwbadges['body']);
 				if(count($cwbadges->badges)>0){
 					foreach($cwbadges->badges as $badge){
 						$badges_string.='<img class="cwbtip" src="'.$badge->badge.'" 

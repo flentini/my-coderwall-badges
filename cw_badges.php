@@ -3,7 +3,7 @@
 Plugin Name: My Coderwall Badges
 Description: gets your badges from coderwall website and let you show them on your blog.
 Author: Francesco Lentini
-Version: 0.1
+Version: 0.2
 Plugin URI: https://github.com/flentini/my-coderwall-badges
 Author URI: http://spugna.org/tpk
 */
@@ -17,6 +17,7 @@ function cwb_init(){
 	define('CWB_URLPATH', WP_PLUGIN_URL . '/' . plugin_basename(dirname(__FILE__)));
 	global $cwb;
 	$cwb = new CWB();
+	add_shortcode('cwbadges', array(&$cwb, 'get_badges'));
 }
 
 function cwb_init_admin() {
@@ -28,10 +29,9 @@ function cwb_init_admin() {
 function cwb_stylesheet(){
 	$cwb_css_url = plugins_url('css/style.css', __FILE__);
 	$cwb_css_file = WP_PLUGIN_DIR . '/coderwall-badges/css/style.css';
-	 if ( file_exists($cwb_css_file) ) {
-            wp_register_style('cwb-css', $cwb_css_url);
-            wp_enqueue_style('cwb-css', $cwb_css_file, false, false, 'all');
-     }
+	
+    wp_register_style('cwb-css', $cwb_css_url);
+    wp_enqueue_style('cwb-css', $cwb_css_file, false, false, 'all');
 }
 
 function cwb_options() {
