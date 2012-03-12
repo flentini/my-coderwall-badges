@@ -3,7 +3,7 @@ Contributors: tpk
 Tags: coderwall, badges
 Requires at least: 3.0
 Tested up to: 3.3.1
-Stable tag: 0.2
+Stable tag: 0.3
 
 gets your badges from coderwall website and let you show them on your blog.
 
@@ -22,7 +22,9 @@ echo $cwb->get_location() -> display location
 
 echo $cwb->get_badges() -> display user badges
 
-you can call them inside your theme's files.  
+you can call them inside your theme's files.
+
+There's also a widget which waits to be activated by you in the theme options.
 
 == Installation ==
 
@@ -34,6 +36,9 @@ you can call them inside your theme's files.
 1. Setup Panel
 
 == Changelog ==
+
+= 0.3 =
+* Added a simple widget.
 
 = 0.2 =
 * Minor fixes, added shortcode, removed curl functions.
