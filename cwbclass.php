@@ -50,10 +50,10 @@ if (!class_exists('CWB')) :
 					$this->location = $cwbadges->location;
 					$this->badges = $badges_string;
 				} else {
-					$this->badges = 'No achievement earned yet!';
+					$this->badges = __('No achievement earned yet!', 'my-coderwall-badges');
 				}
 			} else {
-				$this->badges = 'Username not found!';
+				$this->badges = __('Username not found!', 'my-coderwall-badges');
 			}
 		}
 	}

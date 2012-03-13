@@ -1,0 +1,55 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-03-13 01:25+0100\n"
+"PO-Revision-Date: 2012-03-13 01:27+0100\n"
+"Last-Translator: Martin Prebio <mp@25th-floor.com>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: cw_badges.php:62
+msgid "Coderwall username"
+msgstr "Coderwall Benutzername"
+
+#: cw_badges.php:58
+msgid "Location"
+msgstr "Ort"
+
+#: cw_badges.php:25
+msgid "My CW Badges"
+msgstr "Meine CW Abzeichen"
+
+#: cw_badges.php:54
+#: cw_badges.php:81
+msgid "My Coderwall Badges"
+msgstr "Meine Coderwall Abzeichen"
+
+#: cw_badges.php:57
+msgid "Name"
+msgstr "Name"
+
+#: cwbclass.php:53
+msgid "No achievement earned yet!"
+msgstr "Noch keine Abzeichen erhalten!"
+
+#: cw_badges.php:65
+msgid "Save"
+msgstr "Speichern"
+
+#: cwbclass.php:56
+msgid "Username not found!"
+msgstr "Benutzer nicht gefunden!"
+
+#: cw_badges.php:44
+msgid "You do not have sufficient permissions to access this page."
+msgstr "Du hast nicht die Rechte diese Seite aufzurufen."
+

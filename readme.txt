@@ -3,7 +3,7 @@ Contributors: tpk
 Tags: coderwall, badges
 Requires at least: 3.0
 Tested up to: 3.3.1
-Stable tag: 0.3
+Stable tag: 0.4
 
 gets your badges from coderwall website and let you show them on your blog.
 
@@ -36,6 +36,9 @@ There's also a widget which waits to be activated by you in the theme options.
 1. Setup Panel
 
 == Changelog ==
+
+= 0.4 =
+* German translation
 
 = 0.3 =
 * Added a simple widget.
