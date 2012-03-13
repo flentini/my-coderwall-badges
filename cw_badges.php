@@ -16,13 +16,14 @@ add_action('plugins_loaded', 'cwb_plugins_loaded');
 function cwb_init(){
 	require_once('cwbclass.php');
 	define('CWB_URLPATH', WP_PLUGIN_URL . '/' . plugin_basename(dirname(__FILE__)));
+	load_plugin_textdomain('my-coderwall-badges', false, 'my-coderwall-badges/i18n');
 	global $cwb;
 	$cwb = new CWB();
 	add_shortcode('cwbadges', array(&$cwb, 'get_badges'));
 }
 
 function cwb_init_admin() {
-	$ad_opt_page = add_menu_page('My CW Badges', 'My CW Badges', 
+	$ad_opt_page = add_menu_page(__('My CW Badges', 'my-coderwall-badges'), __('My CW Badges', 'my-coderwall-badges'),
 		'manage_options', 'cwbadges-plugin', 'cwb_options',CWB_URLPATH .'/css/coderwallicon.png');
 	add_action('admin_print_styles-'.$ad_opt_page, wp_enqueue_style('cwb-css', CWB_URLPATH .'/css/style.css', false, false, 'all'));
 }
@@ -31,12 +32,12 @@ function cwb_stylesheet(){
 	$cwb_css_url = plugins_url('css/style.css', __FILE__);
 	$cwb_css_file = WP_PLUGIN_DIR . '/coderwall-badges/css/style.css';
 	
-    wp_register_style('cwb-css', $cwb_css_url);
-    wp_enqueue_style('cwb-css', $cwb_css_file, false, false, 'all');
+	wp_register_style('cwb-css', $cwb_css_url);
+	wp_enqueue_style('cwb-css', $cwb_css_file, false, false, 'all');
 }
 
 function cwb_plugins_loaded(){
-	register_sidebar_widget('Coderwall', 'widget_coderwall');
+	wp_register_sidebar_widget('coderwall', 'Coderwall', 'widget_coderwall');
 }
 
 function cwb_options() {
@@ -51,17 +52,17 @@ function cwb_options() {
 	?>
 	
 	<div class="wrap">
-		<p><div id="icon-users" class="icon32"></div><h2>My Coderwall Badges</h2></p>	
+		<p><div id="icon-users" class="icon32"></div><h2><?php _e('My Coderwall Badges', 'my-coderwall-badges'); ?></h2></p>
 		<div>	
 			<div style="display: inline-block; float: left">
-				<?php echo 'name: <h3>'.$cwb->get_name().'</h3>'; ?>
-				<?php echo 'location: <h3>'.$cwb->get_location().'</h3>'; ?>
+				<?php echo __('Name', 'my-coderwall-badges').': <h3>'.$cwb->get_name().'</h3>'; ?>
+				<?php echo __('Location', 'my-coderwall-badges').': <h3>'.$cwb->get_location().'</h3>'; ?>
 			</div>
 			<div style="display: inline-block; margin-left: 150px; margin-bottom: 125px;">
 			<form name="cwb_form" method="post" action="<?php str_replace( '%7E', '~', $_SERVER['REQUEST_URI']); ?>">
-				<label for="cwusername">coderwall username: </label>
-	        	<input id="cwusername" maxlength="45" size="25" name="cwusername" value="<?php echo $cwb->get_username(); ?>" />
-	        	
+				<label for="cwusername"><?php _e('Coderwall username', 'my-coderwall-badges'); ?>: </label>
+				<input id="cwusername" maxlength="45" size="25" name="cwusername" value="<?php echo $cwb->get_username(); ?>" />
+
 				<input class="button-primary" type="submit" name="Save" value='<?php _e("Save"); ?>' />
 			</form>
 			</div>
@@ -78,7 +79,7 @@ function widget_coderwall ($args){
 	extract($args);
 
 	echo $before_widget . $before_title;
-	_e('My Coderwall Badges');
+	_e('My Coderwall Badges', 'my-coderwall-badges');
 	echo $after_title;
 	echo $cwb->get_badges();
 	echo $after_widget;
