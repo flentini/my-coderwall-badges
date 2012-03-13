@@ -36,7 +36,7 @@ function cwb_stylesheet(){
 }
 
 function cwb_plugins_loaded(){
-	register_sidebar_widget('Coderwall', 'widget_coderwall');
+	wp_register_sidebar_widget('coderwall', 'Coderwall', 'widget_coderwall');
 }
 
 function cwb_options() {
