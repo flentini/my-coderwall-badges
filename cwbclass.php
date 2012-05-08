@@ -55,7 +55,7 @@ if (!class_exists('CWB')) :
 
 		protected function init_badges() {
 			$cwbadges = wp_remote_get('http://coderwall.com/'.$this->username.'.json');
-			if(!empty($cwbadges)){
+			if(!empty($cwbadges) && !is_wp_error($cwbadges)){
 				$badges_string = '<div>';
 				$cwbadges = json_decode($cwbadges['body']);
 				if(count($cwbadges->badges)>0){
