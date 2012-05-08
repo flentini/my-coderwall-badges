@@ -3,7 +3,7 @@
 Plugin Name: My Coderwall Badges
 Description: gets your badges from coderwall website and let you show them on your blog.
 Author: Francesco Lentini
-Version: 0.3
+Version: 0.5
 Plugin URI: https://github.com/flentini/my-coderwall-badges
 Author URI: http://spugna.org/tpk
 */
@@ -31,7 +31,7 @@ function cwb_init_admin() {
 function cwb_stylesheet(){
 	$cwb_css_url = plugins_url('css/style.css', __FILE__);
 	$cwb_css_file = WP_PLUGIN_DIR . '/coderwall-badges/css/style.css';
-	
+
 	wp_register_style('cwb-css', $cwb_css_url);
 	wp_enqueue_style('cwb-css', $cwb_css_file, false, false, 'all');
 }
@@ -45,15 +45,22 @@ function cwb_options() {
 				wp_die( __('You do not have sufficient permissions to access this page.') );
 	}
 	global $cwb;
-	 
+
 	if (isset($_POST['cwusername'])&&!empty($_POST['cwusername'])) {
 		$cwb->set_username($_POST['cwusername']);
 	}
+
+	if (isset($_POST['cwendorse'])&&!empty($_POST['cwendorse'])) {
+		$cwb->set_show_endorse($_POST['cwendorse']);
+	} else {
+		$cwb->set_show_endorse('off');
+	}
+
 	?>
-	
+
 	<div class="wrap">
 		<p><div id="icon-users" class="icon32"></div><h2><?php _e('My Coderwall Badges', 'my-coderwall-badges'); ?></h2></p>
-		<div>	
+		<div>
 			<div style="display: inline-block; float: left">
 				<?php echo __('Name', 'my-coderwall-badges').': <h3>'.$cwb->get_name().'</h3>'; ?>
 				<?php echo __('Location', 'my-coderwall-badges').': <h3>'.$cwb->get_location().'</h3>'; ?>
@@ -62,15 +69,18 @@ function cwb_options() {
 			<form name="cwb_form" method="post" action="<?php str_replace( '%7E', '~', $_SERVER['REQUEST_URI']); ?>">
 				<label for="cwusername"><?php _e('Coderwall username', 'my-coderwall-badges'); ?>: </label>
 				<input id="cwusername" maxlength="45" size="25" name="cwusername" value="<?php echo $cwb->get_username(); ?>" />
-
-				<input class="button-primary" type="submit" name="Save" value='<?php _e("Save"); ?>' />
+				</br>
+				<label for="cwendorse"><?php _e('Display endorse count', 'my-coderwall-endorsecount'); ?>: </label>
+				<input id="cwendorse" type="checkbox" name="cwendorse" <?php if($cwb->get_show_endorse() == 'on') echo 'checked = checked' ?>/>
+				</br>
+				<?php submit_button(); ?>
 			</form>
 			</div>
-		</div>	
+		</div>
 		<div>
 			<?php echo $cwb->get_badges(); ?>
 		</div>
-	</div>	
+	</div>
 <?php }
 
 function widget_coderwall ($args){
@@ -82,5 +92,8 @@ function widget_coderwall ($args){
 	_e('My Coderwall Badges', 'my-coderwall-badges');
 	echo $after_title;
 	echo $cwb->get_badges();
+	if ($cwb->get_show_endorse()=='on'){
+		echo $cwb->get_endorsements();
+	}
 	echo $after_widget;
 }
