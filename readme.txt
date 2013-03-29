@@ -3,7 +3,7 @@ Contributors: tpk
 Tags: coderwall, badges
 Requires at least: 3.0
 Tested up to: 3.3.1
-Stable tag: 0.5
+Stable tag: 0.6
 
 gets your badges from coderwall website and let you show them on your blog.
 
@@ -12,18 +12,6 @@ gets your badges from coderwall website and let you show them on your blog.
 This simple plugin lets you get your [Coderwall](http://coderwall.com) badges and show them on your blog.
 Install, activate the plugin and set your username in the CW Badges Panel.
 You can display your badges using the [cwbadges] shortcode inside your pages/posts.
-You also have these functions available:
-
-echo $cwb->get_username() -> display username
-
-echo $cwb->get_name() -> display name
-
-echo $cwb->get_location() -> display location
-
-echo $cwb->get_badges() -> display user badges
-
-You can call them inside your theme's files.
-
 There's also a widget which waits to be activated by you in the theme options.
 
 == Installation ==
@@ -38,14 +26,17 @@ There's also a widget which waits to be activated by you in the theme options.
 
 == Changelog ==
 
+= 0.6 =
+* fixed ssl verification issue (thanks to tmeinlschmidt)
+
 = 0.5 =
-* Added option to show Coderwall endorsements (http://coderwall.com/blog/2012-01-16-the-hacker-version-of-an-embeddable-social-button)
+* Added option to show Coderwall endorsements (http://coderwall.com/blog/2012-01-16-the-hacker-version-of-an-embeddable-social-button) (thanks to picandocodigo)
 
 = 0.4 =
-* German translation
+* German translation (thanks to bountin)
 
 = 0.3 =
-* Added a simple widget.
+* Added a simple widget. (thanks to picandocodigo)
 
 = 0.2 =
 * Minor fixes, added shortcode, removed curl functions.

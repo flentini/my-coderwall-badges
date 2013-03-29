@@ -3,9 +3,9 @@
 Plugin Name: My Coderwall Badges
 Description: gets your badges from coderwall website and let you show them on your blog.
 Author: Francesco Lentini
-Version: 0.5
+Version: 0.6
 Plugin URI: https://github.com/flentini/my-coderwall-badges
-Author URI: http://spugna.org/tpk
+Author URI: http://github.com/flentini 
 */
 
 add_action('init','cwb_init');
