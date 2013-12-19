@@ -48,7 +48,7 @@ if (!class_exists('CWB')) :
 
 		public function get_endorsements() {
 			return "<a href='http://coderwall.com/$this->username' title='Coderwall endorsements'>" .
-					"<img src='http://api.coderwall.com/$this->username/endorsecount.png' alt='Coderwall endorsements' />" .
+					"<img src='http://api.coderwall.com/$this->username/endorsecount.png' alt='Coderwall endorsements' width='110px' height='20px' />" .
 				"</a>";
 		}
 
@@ -61,7 +61,7 @@ if (!class_exists('CWB')) :
 				if(count($cwbadges->badges)>0){
 					foreach($cwbadges->badges as $badge){
 						$badges_string.='<img class="cwbtip" src="'.$badge->badge.'" 
-							alt="'.$badge->name.'" title="'.$badge->description.'" />';
+							alt="'.$badge->name.'" title="'.$badge->description.'" width="200px" height="200px" />';
 					}
 					$badges_string.='</div>';
 					$this->name = $cwbadges->name;
